@@ -15,17 +15,17 @@
 
 graph LR
 
-
+%%Entidades externas al sistema
 %% Actores
 
-Usuario((Usuario))			%%Entidades externas al sistema
+Usuario((Usuario))
 
 
 %% Casos de Uso
 
 subgraph "El Sistema de Iluminación"
-
-CU1([Encender luces])			%% Verbo infinitivo que describe la acción 
+%% Verbo infinitivo que describe la acción
+CU1([Encender luces])			 
 
 CU2([Apagar luces])
 
@@ -33,8 +33,8 @@ end
 
 
 %% Relaciones actor-casos de uso
-
-Usuario --- CU1				%% Asociaciones simples
+%% Asociaciones simples
+Usuario --- CU1		
 
 Usuario --- CU2
 
@@ -58,19 +58,21 @@ Usuario --- CU2
 
 graph LR
 
-
+%%Entidades externas al sistema
 %% Actores
 
-Cliente((Cliente))		%%Entidades externas al sistema
+Cliente((Cliente))
 
-Admin((Administrador))		%%Entidades externas al sistema
+Admin((Administrador))
 
 
 %% Casos de Uso
 
 subgraph "Gestión de Tienda Online"
 
-CU1([Comprar Producto])		%% Verbo infinitivo que describe la acción 
+%% Verbo infinitivo que describe la acción 
+
+CU1([Comprar Producto])
 
 CU2([Aplicar Cupón Descuento])
 
@@ -79,14 +81,18 @@ CU3([Gestionar Stock])
 
 %% Relación Extend
 
-CU2 -.->|<<extend>>| CU1	%% Relaciones de opcionalidad (Cupón Descuento)
+%% Relaciones de opcionalidad (Cupón Descuento)
+
+CU2 -.->|<<extend>>| CU1
 
 end
 
 
 %% Relaciones actor-casos de uso
 
-Cliente --- CU1			%% Asociaciones simples 
+%% Asociaciones simples 
+
+Cliente --- CU1	
 
 Admin --- CU3
 
@@ -111,10 +117,10 @@ Admin --- CU3
 
 graph LR
 
-
+%%Entidades externas al sistema
 %% Actores
 
-Espectador(("Espectador"))	%%Entidades externas al sistema
+Espectador(("Espectador"))
 
 Editor(("Editor de Contenido"))
 
@@ -125,7 +131,9 @@ Pasarela(("Pasarela de Pagos"))
 
 subgraph Plataforma de Streaming
 
-UC1([Reproducir Película]) 	%% Verbo infinitivo que describe la acción 
+%% Verbo infinitivo que describe la acción
+
+UC1([Reproducir Película]) 	 
 
 UC2([Validar Suscripción])
 
@@ -140,16 +148,19 @@ end
 
 %% Relaciones Include y Extend
 
+%% Relaciones de obligatoriedad
+UC1 -.->|<<include>>| UC2
 
-UC1 -.->|<<include>>| UC2	%% Relaciones de obligatoriedad
 
-UC3 -.->|<<extend>>| UC1	%% Relaciones de opcionalidad (Activar Subtítulos)
+%% Relaciones de opcionalidad (Activar Subtítulos)
+UC3 -.->|<<extend>>| UC1
 
 
 %% Relaciones actor-casos de uso
 
+%% Asociaciones simples
 
-Espectador --- UC1		%% Asociaciones simples
+Espectador --- UC1
 
 Espectador --- UC5
 
